@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CircleImage: View {
+    let image:Image
     var body: some View {
         ZStack{
-            Image("tom-huynh")
+            image
                 .resizable()
                 .frame(width: 200,height: 200)
-            Circle()
-                .frame(width: 200,height: 200)
-                .clipped()
+                .clipShape(Circle())
+                .overlay(Circle()
+                    .stroke(Color(.white), lineWidth:4))
+                .shadow(color: .red, radius: 7)
         }
         
     }
@@ -23,6 +25,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage()
+        CircleImage(image: Image("tom-huynh"))
     }
 }
